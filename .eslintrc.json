@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "import/extensions": ["warn", "never"],
+    "import/no-named-as-default": "off",
+    "curly": ["error", "all"],
+    "no-unused-vars": "off", // Prefer TS version
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "varsIgnorePattern": "^_" }
+    ],
+    // https://github.com/typescript-eslint/typescript-eslint/issues/2483
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "camelcase": "off",
+    "no-console": "off"
+  },
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}
