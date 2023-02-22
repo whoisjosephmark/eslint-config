@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "plugins": ["@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "rules": {
@@ -13,7 +10,7 @@
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
-      { "varsIgnorePattern": "^_" }
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
     ],
     // https://github.com/typescript-eslint/typescript-eslint/issues/2483
     "no-shadow": "off",
