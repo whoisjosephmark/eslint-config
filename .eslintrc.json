@@ -1,7 +1,12 @@
 {
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "plugins": ["@typescript-eslint"],
-  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "parser": {
+      "ts": "@typescript-eslint/parser",
+      "tsx": "@typescript-eslint/parser"
+    }
+  },
   "rules": {
     "import/extensions": ["warn", "never"],
     "import/no-named-as-default": "off",
