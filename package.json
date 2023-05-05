@@ -32,6 +32,6 @@
     "prettier": "^2.8.4"
   },
   "peerDependencies": {
-    "typescript": "^4"
+    "typescript": ">=4 <=5"
   }
 }
