@@ -1,4 +1,5 @@
 import { FlatCompat } from "@eslint/eslintrc"
+import { fixupPluginRules } from "@eslint/compat"
 import js from "@eslint/js"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
@@ -16,12 +17,35 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 })
 
+const baseConfig = compat.extends("airbnb-base")
+
+const importConfig = baseConfig.find(({ plugins }) => !!plugins?.import)
+const noImportConfig = baseConfig.filter(({ plugins }) => !plugins?.import)
+
 export default [
-  ...compat.extends("airbnb-base"),
+  ...noImportConfig,
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
+  // https://github.com/import-js/eslint-plugin-import/issues/2948#issuecomment-2148832701
   {
-    name: "@josephmark/eslint-config",
+    name: "@josephmark/eslint-config:import",
+    plugins: { import: fixupPluginRules(compat.plugins("eslint-plugin-import")[0]?.plugins?.import) },
+    settings: {
+      "import/parsers": {
+        espree: [".js", ".jsx", ".mjs", ".cjs"],
+        "@typescript-eslint/parser": [".ts", ".tsx"],
+      },
+      "import/resolver": {
+        typescript: true,
+        node: true,
+      },
+    },
+    rules: {
+      ...importConfig.rules,
+    },
+  },
+  {
+    name: "@josephmark/eslint-config:jm",
     rules: {
       "import/extensions": ["warn", "never"],
       "import/no-named-as-default": "off",
@@ -37,6 +61,8 @@ export default [
         ...globals.browser,
       },
       parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
         ecmaFeatures: {
           jsx: true,
         },
