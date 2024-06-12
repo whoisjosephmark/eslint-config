@@ -8,10 +8,13 @@ The Josephmark team's basic typescript linter config
 
 ## Usage
 
-Add this to your eslint config `.eslintrc.json`
+Add this to your eslint config `eslint.config.js` or `eslint.config.mjs`
 
-```json
-{
-  "extends": ["@josephmark"]
-}
+```js
+import josephmarkEslintConfig from "@josephmark/eslint-config"
+
+module.exports = [
+  josephmarkEslintConfig,
+  // Add any additional rules here
+]
 ```
