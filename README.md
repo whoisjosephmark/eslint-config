@@ -11,10 +11,10 @@ The Josephmark team's basic typescript linter config
 Add this to your eslint config `eslint.config.js` or `eslint.config.mjs`
 
 ```js
-import josephmarkEslintConfig from "@josephmark/eslint-config"
+import jm from "@josephmark/eslint-config"
 
 module.exports = [
-  josephmarkEslintConfig,
+  jm,
   // Add any additional rules here
 ]
 ```

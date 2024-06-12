@@ -24,8 +24,6 @@ const noImportConfig = baseConfig.filter(({ plugins }) => !plugins?.import)
 
 export default [
   ...noImportConfig,
-  ...tseslint.configs.recommended,
-  eslintConfigPrettier,
   // https://github.com/import-js/eslint-plugin-import/issues/2948#issuecomment-2148832701
   {
     name: "@josephmark/eslint-config:import",
@@ -42,8 +40,12 @@ export default [
     },
     rules: {
       ...importConfig.rules,
+      // Typescript will manage named imports automatically
+      "import/named": "off",
     },
   },
+  ...tseslint.configs.recommended,
+  eslintConfigPrettier,
   {
     name: "@josephmark/eslint-config:rules",
     rules: {
@@ -52,9 +54,12 @@ export default [
       curly: ["error", "all"],
       "no-underscore-dangle": "off",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+      "no-shadow": "off",
       "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/no-explicit-any": "off",
       camelcase: "off",
       "no-console": "off",
+      "arrow-body-style": "off",
     },
   },
   {
@@ -66,9 +71,6 @@ export default [
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
-        ecmaFeatures: {
-          jsx: true,
-        },
       },
     },
   },
