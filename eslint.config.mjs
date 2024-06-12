@@ -45,7 +45,7 @@ export default [
     },
   },
   {
-    name: "@josephmark/eslint-config:jm",
+    name: "@josephmark/eslint-config:rules",
     rules: {
       "import/extensions": ["warn", "never"],
       "import/no-named-as-default": "off",
@@ -56,6 +56,9 @@ export default [
       camelcase: "off",
       "no-console": "off",
     },
+  },
+  {
+    name: "@josephmark/eslint-config:global",
     languageOptions: {
       globals: {
         ...globals.browser,
