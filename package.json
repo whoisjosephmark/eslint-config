@@ -1,6 +1,6 @@
 {
   "name": "@josephmark/eslint-config",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "The Josephmark team's basic typescript linter config",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
