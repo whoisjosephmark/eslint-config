@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url"
 
 import eslintConfigPrettier from "eslint-config-prettier"
 import globals from "globals"
-import tseslint from "typescript-eslint"
+import { configs as tsConfigs } from "typescript-eslint"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -22,8 +22,10 @@ const baseConfig = compat.extends("airbnb-base")
 const importConfig = baseConfig.find(({ plugins }) => !!plugins?.import)
 const noImportConfig = baseConfig.filter(({ plugins }) => !plugins?.import)
 
+/** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
   ...noImportConfig,
+  ...tsConfigs.recommended,
   // https://github.com/import-js/eslint-plugin-import/issues/2948#issuecomment-2148832701
   {
     name: "@josephmark/eslint-config:import",
@@ -44,7 +46,6 @@ export default [
       "import/named": "off",
     },
   },
-  ...tseslint.configs.recommended,
   eslintConfigPrettier,
   {
     name: "@josephmark/eslint-config:rules",
