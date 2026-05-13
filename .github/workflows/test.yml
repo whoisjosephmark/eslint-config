@@ -8,4 +8,4 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-      - run: npm cit
+      - run: npm cit --legacy-peer-deps
