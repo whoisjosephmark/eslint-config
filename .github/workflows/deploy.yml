@@ -1,4 +1,4 @@
-name: Build + Deploy
+name: Deploy
 on:
   release:
     types: [created]
@@ -17,5 +17,4 @@ jobs:
           node-version: 24
           registry-url: "https://registry.npmjs.org"
       - run: npm ci --legacy-peer-deps
-      - run: npm run build
       - run: npm publish --provenance --access public
