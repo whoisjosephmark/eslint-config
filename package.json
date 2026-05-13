@@ -1,7 +1,7 @@
 {
   "name": "@josephmark/eslint-config",
   "main": "eslint.config.mjs",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "The Josephmark team's basic typescript linter config",
   "scripts": {
     "test": "eslint test/"
